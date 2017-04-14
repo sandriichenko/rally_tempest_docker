@@ -12,3 +12,7 @@ then
     rally verify start --skip-list /var/lib/skip_lists/$SKIP_LIST $CUSTOM
     rally verify report --type junit-xml --to report.xml
 fi
+if [ $DEBUG ==  TRUE ]
+then
+    while true; do; sleep 1; done;
+fi

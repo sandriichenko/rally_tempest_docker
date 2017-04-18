@@ -4,7 +4,8 @@ MAINTAINER Oleksii Butenko <obutenko@mirantis.com>
 WORKDIR /var/lib
 USER root
 RUN git clone https://git.openstack.org/openstack/tempest -b 15.0.0 && \
-    pip install tempest==15.0.0
+    pip install tempest==15.0.0 && \
+    pip install ddt==1.0.1
     
 WORKDIR /home/rally
 

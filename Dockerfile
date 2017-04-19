@@ -13,6 +13,8 @@ RUN git clone https://git.openstack.org/openstack/tempest -b 15.0.0 && \
     pip install -r designate-tempest-plugin/test-requirements.txt && \
     pip install -r ceilometer/test-requirements.txt
 
+WORKDIR /home/rally
+
 COPY skip_lists /var/lib/skip_lists
 COPY tempest_conf /var/lib/tempest_conf
 COPY run_tempest.sh /usr/bin/run-tempest

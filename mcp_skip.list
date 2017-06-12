@@ -1,12 +1,2 @@
 tempest.scenario.test_security_groups_basic_ops.TestSecurityGroupsBasicOps.test_boot_into_disabled_port_security_network_without_secgroup[compute,id-13ccf253-e5ad-424b-9c4a-97b88a026699,network]: PortSecurity in not enabled
 tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_connectivity_between_vms_on_different_networks[compute,id-1546850e-fbaa-42f5-8b5f-03d8a6a95f15,network]: Skipped until Bug 1610994 is resolved.
-tempest.api.volume.admin.test_volumes_backup.VolumesBackupsAdminV1Test.test_volume_backup_export_import[id-a99c54a1-dd80-4724-8a13-13bf58d4068d]: Service cinder-backup is absent
-tempest.api.volume.admin.test_volumes_backup.VolumesBackupsAdminV1Test.test_volume_backup_reset_status[id-47a35425-a891-4e13-961c-c45deea21e94]: Service cinder-backup is absent
-tempest.api.volume.admin.test_volumes_backup.VolumesBackupsAdminV2Test.test_volume_backup_export_import[id-a99c54a1-dd80-4724-8a13-13bf58d4068d]: Service cinder-backup is absent
-tempest.api.volume.admin.test_volumes_backup.VolumesBackupsAdminV2Test.test_volume_backup_reset_status[id-47a35425-a891-4e13-961c-c45deea21e94]: Service cinder-backup is absent
-tempest.api.volume.test_volumes_backup.VolumesBackupsV1Test.test_backup_create_attached_volume[compute,id-07af8f6d-80af-44c9-a5dc-c8427b1b62e6]: Service cinder-backup is absent
-tempest.api.volume.test_volumes_backup.VolumesBackupsV1Test.test_bootable_volume_backup_and_restore[id-2a8ba340-dff2-4511-9db7-646f07156b15]: Service cinder-backup is absent
-tempest.api.volume.test_volumes_backup.VolumesBackupsV1Test.test_volume_backup_create_get_detailed_list_restore_delete[id-a66eb488-8ee1-47d4-8e9f-575a095728c6]: Service cinder-backup is absent
-tempest.api.volume.test_volumes_backup.VolumesBackupsV2Test.test_backup_create_attached_volume[compute,id-07af8f6d-80af-44c9-a5dc-c8427b1b62e6]: Service cinder-backup is absent
-tempest.api.volume.test_volumes_backup.VolumesBackupsV2Test.test_bootable_volume_backup_and_restore[id-2a8ba340-dff2-4511-9db7-646f07156b15]: Service cinder-backup is absent
-tempest.api.volume.test_volumes_backup.VolumesBackupsV2Test.test_volume_backup_create_get_detailed_list_restore_delete[id-a66eb488-8ee1-47d4-8e9f-575a095728c6]: Service cinder-backup is absent

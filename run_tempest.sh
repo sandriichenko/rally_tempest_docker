@@ -10,5 +10,7 @@ rally verify add-verifier-ext --source /var/lib/ceilometer
 rally verify add-verifier-ext --source /var/lib/designate-tempest-plugin
 rally verify configure-verifier --extend /var/lib/tempest_conf/$TEMPEST_CONF
 rally verify configure-verifier --show 
+report='report_'`date +%F_%H-%M`
 rally verify start --skip-list /var/lib/skip_lists/$SKIP_LIST $CUSTOM
-rally verify report --type junit-xml --to report.xml
+rally verify report --type junit-xml --to $report.xml
+rally verify report --type html --to $report.html 

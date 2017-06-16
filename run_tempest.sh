@@ -15,7 +15,6 @@ then
     rally verify start --skip-list /var/lib/mcp_skip.list --pattern set=$SET
 else
     rally verify start --skip-list /var/lib/mcp_skip.list $CUSTOM
-echo $CUSTOM
 fi
 report='report_'`date +%F_%H-%M`
 rally verify report --type junit-xml --to $report.xml

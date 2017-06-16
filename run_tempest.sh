@@ -10,7 +10,13 @@ rally verify add-verifier-ext --source /var/lib/ironic
 #rally verify add-verifier-ext --source /var/lib/murano
 rally verify configure-verifier --extend /var/lib/lvm_mcp.conf
 rally verify configure-verifier --show
-rally verify start --skip-list /var/lib/mcp_skip.list $CUSTOM
+if [ $SET ]
+then
+    rally verify start --skip-list /var/lib/mcp_skip.list --pattern set=$SET
+else
+    rally verify start --skip-list /var/lib/mcp_skip.list $CUSTOM
+echo $CUSTOM
+fi
 report='report_'`date +%F_%H-%M`
 rally verify report --type junit-xml --to $report.xml
 rally verify report --type html --to $report.html

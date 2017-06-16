@@ -20,4 +20,6 @@ COPY mcp_skip.list /var/lib/mcp_skip.list
 COPY lvm_mcp.conf /var/lib/lvm_mcp.conf
 COPY run_tempest.sh /usr/bin/run-tempest
 
-ENTRYPOINT ["run-tempest"]
+ENV SOURCE_FILE keystonercv3
+
+ENTRYPOINT bash /usr/bin/run-tempest > report_`date +%F_%H-%M`.log

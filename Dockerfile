@@ -22,4 +22,4 @@ COPY run_tempest.sh /usr/bin/run-tempest
 
 ENV SOURCE_FILE keystonercv3
 
-ENTRYPOINT bash /usr/bin/run-tempest > report_`date +%F_%H-%M`.log
+ENTRYPOINT ["run-tempest"]

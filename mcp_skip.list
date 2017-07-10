@@ -1,3 +1,5 @@
 tempest.scenario.test_security_groups_basic_ops.TestSecurityGroupsBasicOps.test_boot_into_disabled_port_security_network_without_secgroup[compute,id-13ccf253-e5ad-424b-9c4a-97b88a026699,network]: PortSecurity in not enabled
 tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_connectivity_between_vms_on_different_networks[compute,id-1546850e-fbaa-42f5-8b5f-03d8a6a95f15,network]: Skipped until Bug 1610994 is resolved.
 tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_network_basic_ops[compute,id-f323b3ba-82f8-4db7-8ea6-6a895869ec49,network,smoke]: Skipped because fails time to time, port doesn't become ACTIVE quickly. Will be fixed
+tempest.api.network.test_networks.NetworksTest.test_external_network_visibility[smoke,af774677-42a9-4e4b-bb58-16fe6a5bc1ec,external-net,network]: External subnet is reachable
+tempest.api.network.test_networks.NetworksV6Test.test_external_network_visibility[smoke,af774677-42a9-4e4b-bb58-16fe6a5bc1ec,external-net,network]: External subnet is reachable

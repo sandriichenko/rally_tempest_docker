@@ -2,8 +2,11 @@
 
 source /home/rally/$SOURCE_FILE
 
+log_dir='/home/rally/rally_reports'
+mkdir $log_dir
+
 report='report_'$SET'_'`date +%F_%H-%M`
-log=$report.log
+log=$log_dir/$report.log
 rally-manage db recreate
 rally deployment create --fromenv --name=tempest
 rally verify create-verifier --type tempest --name tempest-verifier --source /var/lib/tempest --system-wide
@@ -18,5 +21,5 @@ then
 else
     rally verify start --skip-list /var/lib/mcp_skip.list $CUSTOM  | tee -a  $log
 fi
-rally verify report --type junit-xml --to $report.xml
-rally verify report --type html --to $report.html
+rally verify report --type junit-xml --to $log_dir/$report.xml
+rally verify report --type html --to $log_dir/$report.html

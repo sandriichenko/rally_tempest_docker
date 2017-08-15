@@ -2,7 +2,7 @@
 
 source /home/rally/$SOURCE_FILE
 
-log_dir='/home/rally/rally_reports'
+log_dir="${LOG_DIR:-/home/rally/rally_reports/}"
 mkdir -p $log_dir
 
 report='report_'$SET'_'`date +%F_%H-%M`

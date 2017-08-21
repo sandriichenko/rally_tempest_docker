@@ -4,7 +4,7 @@ source /home/rally/$SOURCE_FILE
 
 rally-manage db recreate
 rally deployment create --fromenv --name=tempest
-rally verify create-verifier --type tempest --name tempest-verifier --source /var/lib/tempest --version ${TEMPEST_VERIFIER_VERSION:-15.0.0} ${TEMPEST_VERIFIER_CUSTOM:---system-wide}
+rally verify create-verifier --type tempest --name tempest-verifier --source /var/lib/tempest ${TEMPEST_VERIFIER_CUSTOM:- --version 15.0.0 --system-wide}
 rally verify configure-verifier --extend /var/lib/lvm_mcp_newton.conf
 rally verify configure-verifier --show 
 report='report'_`date +%F_%H-%M`

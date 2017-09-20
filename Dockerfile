@@ -1,18 +1,19 @@
 FROM rallyforge/rally:0.9.0
 MAINTAINER Sofiia Andriichenko <sandriichenko@mirantis.com>
 
+ENV TEMPEST_TAG="16.0.0"
+ENV DESIGNATE_TAG="0.2.0"
+
 WORKDIR /var/lib
 USER root
-RUN git clone https://git.openstack.org/openstack/tempest && \
-    pip install tempest && \
-    git clone https://github.com/openstack/ironic.git && \
-    pip install -r ironic/test-requirements.txt && \
-    pip install ddt==1.0.1 && \
-    git clone https://github.com/openstack/designate-tempest-plugin.git && \
-    pip install -r designate-tempest-plugin/test-requirements.txt && \
-    git clone https://github.com/openstack/murano.git && \
-    pip install -r murano/test-requirements.txt
 
+    # TBD define plugins tag/branch and Ironic plugin
+
+RUN git clone https://github.com/openstack/tempest.git -b $TEMPEST_TAG && \
+    pip install tempest==$TEMPEST_TAG && \
+    pip install ddt==1.0.1 && \
+    git clone https://github.com/openstack/designate-tempest-plugin.git -b $DESIGNATE_TAG && \
+    pip install -r designate-tempest-plugin/test-requirements.txt
 
 WORKDIR /home/rally
 

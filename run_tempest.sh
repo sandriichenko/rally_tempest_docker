@@ -11,9 +11,17 @@ rally-manage db recreate
 rally deployment create --fromenv --name=tempest
 rally verify create-verifier --type tempest --name tempest-verifier --source /var/lib/tempest --version $TEMPEST_TAG  --system-wide
 rally verify add-verifier-ext --source /var/lib/designate-tempest-plugin --version $DESIGNATE_TAG
+
+rally verify add-verifier-ext --source /var/lib/barbican-tempest-plugin/ --version  $BARBICAN_TAG
+
 #rally verify add-verifier-ext --source /var/lib/ironic
 #rally verify add-verifier-ext --source /var/lib/murano
 rally verify configure-verifier --extend /var/lib/lvm_mcp.conf 
+
+mkdir /etc/tempest
+rally verify configure-verifier --show > /etc/tempest/tempest.conf
+sed -i '1,3d' /etc/tempest/tempest.conf
+
 rally verify configure-verifier --show | tee -a $log
 if [ $SET ]
 then

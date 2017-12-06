@@ -1,0 +1,29 @@
+From bc2e17d3dec4e42ebde029c95ca4bf4c78d15780 Mon Sep 17 00:00:00 2001
+From: sandriichenko <sandriichenko@mirantis.com>
+Date: Tue, 5 Dec 2017 16:52:15 +0200
+Subject: [PATCH] Added skip
+
+---
+ barbican_tempest_plugin/tests/api/base.py | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/barbican_tempest_plugin/tests/api/base.py b/barbican_tempest_plugin/tests/api/base.py
+index 7256a10..26fe533 100644
+--- a/barbican_tempest_plugin/tests/api/base.py
++++ b/barbican_tempest_plugin/tests/api/base.py
+@@ -65,6 +65,12 @@ class BaseKeyManagerTest(test.BaseTestCase):
+     created_objects = {}
+
+     @classmethod
++    def skip_checks(cls):
++        super(BaseKeyManagerTest, cls).skip_checks()
++        if not CONF.service_available.barbican:
++            raise cls.skipException('Barbican is not enabled.')
++
++    @classmethod
+     def setup_clients(cls):
+         super(BaseKeyManagerTest, cls).setup_clients()
+         os = getattr(cls, 'os_%s' % cls.credentials[0])
+-- 
+1.9.1
+

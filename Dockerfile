@@ -17,18 +17,26 @@ RUN git clone https://github.com/openstack/tempest.git -b $TEMPEST_TAG && \
     pip install -r designate-tempest-plugin/test-requirements.txt && \
     git clone https://github.com/openstack/barbican-tempest-plugin.git
 
-WORKDIR /var/lib/barbican-tempest-plugin
-
-RUN git checkout $BARBICAN_TAG && \
-    pip install -r requirements.txt && \
-    pip install -r test-requirements.txt
-
-
 WORKDIR /home/rally
 
 COPY mcp_skip.list /var/lib/mcp_skip.list
 COPY lvm_mcp.conf /var/lib/lvm_mcp.conf
 COPY run_tempest.sh /usr/bin/run-tempest
+COPY barbican_skip.patch /var/lib/barbican-tempest-plugin/barbican_skip.patch
+
+WORKDIR /var/lib/barbican-tempest-plugin
+
+RUN git checkout $BARBICAN_TAG && \
+    pip install -r requirements.txt && \
+    pip install -r test-requirements.txt && \
+    git apply barbican_skip.patch && \
+#    git add barbican_tempest_plugin/tests/api/base.py && \
+#    git commit -m 'Added skip' && \
+    git checkout -b 0.1
+
+ENV BARBICAN_TAG="0.1"
+
+WORKDIR /home/rally
 
 ENV SOURCE_FILE keystonercv3
 

@@ -28,15 +28,7 @@ WORKDIR /var/lib/barbican-tempest-plugin
 
 RUN git checkout $BARBICAN_TAG && \
     pip install -r requirements.txt && \
-    pip install -r test-requirements.txt && \
-    git apply barbican_skip.patch && \
-#    git add barbican_tempest_plugin/tests/api/base.py && \
-#    git commit -m 'Added skip' && \
-    git checkout -b 0.1
-
-ENV BARBICAN_TAG="0.1"
-
-WORKDIR /home/rally
+    pip install -r test-requirements.txt
 
 ENV SOURCE_FILE keystonercv3
 

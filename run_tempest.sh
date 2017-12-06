@@ -1,5 +1,18 @@
 #!/bin/bash -xe
 
+#cd /var/lib/barbican-tempest-plugin
+#git apply barbican_skip.patch 
+#git add barbican_tempest_plugin/tests/api/base.py 
+#git commit -m 'Added skip'
+#git checkout -b 0.1
+
+git am barbican_skip.patch
+git checkout -b 0.1
+
+export BARBICAN_TAG="0.1"
+
+cd
+
 source /home/rally/$SOURCE_FILE
 
 log_dir="${LOG_DIR:-/home/rally/rally_reports/}"

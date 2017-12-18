@@ -1,4 +1,4 @@
-FROM rallyforge/rally:0.9.0
+FROM xrally/xrally-openstack:0.9.0
 MAINTAINER Sofiia Andriichenko <sandriichenko@mirantis.com>
 
 ENV TEMPEST_TAG="16.0.0"
@@ -15,7 +15,8 @@ RUN git clone https://github.com/openstack/tempest.git -b $TEMPEST_TAG && \
     pip install ddt==1.0.1 && \
     git clone https://github.com/openstack/designate-tempest-plugin.git -b $DESIGNATE_TAG && \
     pip install -r designate-tempest-plugin/test-requirements.txt && \
-    git clone https://github.com/openstack/barbican-tempest-plugin.git
+    git clone https://github.com/openstack/barbican-tempest-plugin.git &&\
+    pip install ansible==2.3
 
 WORKDIR /home/rally
 

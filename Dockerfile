@@ -13,7 +13,7 @@ RUN git clone https://git.openstack.org/openstack/tempest -b $TEMPEST_TAG && \
 
 WORKDIR /home/rally
 
-COPY skip_lists /var/lib/skip_lists
+COPY mcp_skip.list /var/lib/mcp_skip.list
 COPY lvm_mcp.conf /var/lib/lvm_mcp.conf
 COPY run_tempest.sh /usr/bin/run-tempest
 

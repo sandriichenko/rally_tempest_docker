@@ -1,22 +1,22 @@
-FROM rallyforge/rally:0.9.0
-MAINTAINER Oleksii Butenko <obutenko@mirantis.com>
+FROM xrally/xrally-openstack:0.10.1
+
+ENV TEMPEST_TAG '17.2.0'
 
 WORKDIR /var/lib
 USER root
-RUN git clone https://git.openstack.org/openstack/tempest -b 15.0.0 && \
-    pip install tempest==15.0.0 && \
-    pip install ddt==1.0.1 && \
-    git clone https://github.com/openstack/ironic.git && \
-    git clone https://github.com/openstack/designate-tempest-plugin.git && \
-    git clone https://github.com/openstack/ceilometer.git && \
-    pip install -r ironic/test-requirements.txt && \
-    pip install -r designate-tempest-plugin/test-requirements.txt && \
-    pip install -r ceilometer/test-requirements.txt
+RUN git clone https://git.openstack.org/openstack/tempest -b $TEMPEST_TAG && \
+    pip install tempest==$TEMPEST_TAG && \
+    git clone https://github.com/openstack/heat-tempest-plugin.git && \
+    pip install -r heat-tempest-plugin/test-requirements.txt && \
+    pip install -r heat-tempest-plugin/requirements.txt && \
+    pip install ansible==2.3
 
 WORKDIR /home/rally
 
 COPY skip_lists /var/lib/skip_lists
-COPY tempest_conf /var/lib/tempest_conf
+COPY lvm_mcp.conf /var/lib/lvm_mcp.conf
 COPY run_tempest.sh /usr/bin/run-tempest
 
-ENTRYPOINT ["run-tempest"]
+ENV TEMPEST_CONF lvm_mcp.conf
+ENV SOURCE_FILE keystonercv3
+#ENTRYPOINT ["run-tempest"]
